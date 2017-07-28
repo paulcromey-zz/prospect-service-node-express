@@ -16,6 +16,7 @@ mongoose.connection.on('error', function(){
 });
 
 require('../schemas/hotels.js');
+require('../schemas/prospects.js');
 
 process.on('SIGINT', function() {
     mongoose.connection.close(function() {

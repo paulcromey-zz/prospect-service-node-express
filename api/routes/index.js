@@ -3,6 +3,7 @@ var router = express.Router();
 
 var hotels = require('../controllers/hotels.js');
 var reviews = require('../controllers/reviews.js');
+var prospects = require('../controllers/prospects.js');
 
 router
     .route('/hotels')
@@ -25,5 +26,16 @@ router
         .get(reviews.getReview)
         .put(reviews.updateReview)
         .delete(reviews.deleteReview);
+
+router
+    .route('/prospects')
+        .get(prospects.getProspects)
+        .post(prospects.addProspect);
+
+router
+    .route('/prospects/:prospectId')
+        .get(prospects.getProspect)
+        .put(prospects.updateProspect)
+        .delete(prospects.deleteProspect);
 
 module.exports = router;
