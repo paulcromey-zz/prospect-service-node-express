@@ -58,19 +58,36 @@ module.exports.addProspect = function(req, res) {
         && req.body.ip_address 
         && req.body.token 
         && req.body.source){
-		console.log(req.body);
-		Prospect
-			.create({
-				email : req.body.email,
-				ip_address : req.body.ip_address,
-                token : req.body.token,
-                source : req.body.source
-			}, function(err, prospect) {
-				if (err) {
-					res.status(400).json(err);
-				} else {
-					res.status(201).json(prospect);
-				}
+		Prospect.find(req.params.email).exec(function(err, prospects) {
+			/*var response = {
+				status : 200,
+				message : prospects
+			};*/
+			if (err) {  
+				res.status(500).json(err);
+				return;
+			} 
+			if(prospects.length < 5){
+				console.log("CREATE Prospect");
+				Prospect
+					.create({
+						email : req.body.email,
+						ip_address : req.body.ip_address,
+						token : req.body.token,
+						source : req.body.source
+						}, function(err, prospect) {
+							if (err) {
+								res.status(400).json(err);
+							} else {
+								res.status(201).json(prospect);
+							}
+					});	
+			} else {
+				res.status(403).json({
+					"message" : "unauthorised"
+				});
+			}
+			
 		});
 	} else {
 		console.log("Data missing from body");
