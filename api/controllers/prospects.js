@@ -99,7 +99,7 @@ module.exports.updateProspect = function(req, res) {
 			res.status(response.status).json(response.message);
 		} else {
 			prospect.email = req.body.email,
-			prospect.ipAddress = req.body.ipAddress,
+			prospect.ip_address = req.body.ip_address,
             prospect.token = req.body.token,
             prospect.source = req.body.source
             prospect.updatedOn = moment().toISOString();
