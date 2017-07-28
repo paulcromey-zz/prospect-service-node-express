@@ -1,9 +1,12 @@
 var mongoose = require('mongoose');
 
-var prospectSchema = new mongoose.Schema({
+const prospectSchema = new mongoose.Schema({
     email : {
-      type : String,
-      required : true 
+        type: String,
+        trim: true,
+        lowercase: true,
+        required: 'Email address is required',
+        match: [/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/, 'Please fill a valid email address']
     },
     ip_address : {
       type : String,

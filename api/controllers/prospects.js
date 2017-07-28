@@ -4,6 +4,8 @@ var Prospect = mongoose.model('Prospect');
 
 module.exports.getProspects = function(req, res) {
 
+	console.log("GET Prospects");
+
 	var maxCount = 10;
 
 	if(isNaN(_offset(req)) || isNaN(_count(req))){
@@ -31,7 +33,7 @@ module.exports.getProspects = function(req, res) {
 };
 
 module.exports.getProspect = function(req, res) {
-	
+	console.log("GET Prospect");
 	Prospect.findById(req.params.prospectId).exec(function(err, prospect) {
 		var response = {
 			status : 200,
@@ -52,7 +54,7 @@ module.exports.getProspect = function(req, res) {
 };
 
 module.exports.addProspect = function(req, res) {
-	console.log("POST new Prospect");
+	console.log("POST Prospect");
     if (req.body 
         && req.body.email 
         && req.body.ip_address 
