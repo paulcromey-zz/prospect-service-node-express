@@ -118,7 +118,6 @@ module.exports.updateProspect = function(req, res) {
 		} else {
 			prospect.email = req.body.email,
 			prospect.ip_address = req.body.ip_address,
-            prospect.token = req.body.token,
             prospect.source = req.body.source
             prospect.updatedOn = moment().toISOString();
 			prospect.save(function(err, updateProspect){
