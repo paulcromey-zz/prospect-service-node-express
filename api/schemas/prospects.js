@@ -1,6 +1,9 @@
-var mongoose = require('mongoose');
+const mongoose = require('mongoose');
 
 const prospectSchema = new mongoose.Schema({
+    uuid: {
+        type: String
+    },
     email : {
         type: String,
         trim: true,
@@ -13,8 +16,7 @@ const prospectSchema = new mongoose.Schema({
       required : true 
     },
     token : {
-      type : String,
-      required : true 
+      type : String
     },
     source : {
       type : String,

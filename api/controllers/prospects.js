@@ -1,6 +1,9 @@
-var moment = require('moment');
-var mongoose = require('mongoose');
-var Prospect = mongoose.model('Prospect');
+const moment = require('moment');
+const jwt = require('jsonwebtoken');
+const uuidv1 = require('uuid/v1');
+const mongoose = require('mongoose');
+
+const Prospect = mongoose.model('Prospect');
 
 module.exports.getProspects = function(req, res) {
 
@@ -58,13 +61,8 @@ module.exports.addProspect = function(req, res) {
     if (req.body 
         && req.body.email 
         && req.body.ip_address 
-        && req.body.token 
         && req.body.source){
-		Prospect.find(req.params.email).exec(function(err, prospects) {
-			/*var response = {
-				status : 200,
-				message : prospects
-			};*/
+		Prospect.find({email: req.body.email}).exec(function(err, prospects) {
 			if (err) {  
 				res.status(500).json(err);
 				return;
@@ -73,9 +71,10 @@ module.exports.addProspect = function(req, res) {
 				console.log("CREATE Prospect");
 				Prospect
 					.create({
+						uuid : uuidv1(),
 						email : req.body.email,
 						ip_address : req.body.ip_address,
-						token : req.body.token,
+						token : jwt.sign({ email: req.body.email }, 'mean'),
 						source : req.body.source
 						}, function(err, prospect) {
 							if (err) {
@@ -86,7 +85,7 @@ module.exports.addProspect = function(req, res) {
 					});	
 			} else {
 				res.status(403).json({
-					"message" : "unauthorised"
+					"message" : "Too many pending requests"
 				});
 			}
 			
