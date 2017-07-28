@@ -55,14 +55,14 @@ module.exports.addProspect = function(req, res) {
 	console.log("POST new Prospect");
     if (req.body 
         && req.body.email 
-        && req.body.ipAddress 
+        && req.body.ip_address 
         && req.body.token 
         && req.body.source){
 		console.log(req.body);
 		Prospect
 			.create({
 				email : req.body.email,
-				ipAddress : req.body.ipAddress,
+				ip_address : req.body.ip_address,
                 token : req.body.token,
                 source : req.body.source
 			}, function(err, prospect) {

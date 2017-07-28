@@ -15,7 +15,6 @@ mongoose.connection.on('error', function(){
     console.log('Mongoose connection error ' + err);
 });
 
-require('../schemas/hotels.js');
 require('../schemas/prospects.js');
 
 process.on('SIGINT', function() {
