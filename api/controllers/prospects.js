@@ -168,4 +168,3 @@ var _splitArray = function(input) {
 	}
 	return output;
 };
-
