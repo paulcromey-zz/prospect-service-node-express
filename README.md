@@ -1,2 +1,9 @@
-# mean
-Mean stack tutorial example
+# prospect-service-node-express
+
+## To install
+
+npm install
+
+## To run
+
+nodemon
