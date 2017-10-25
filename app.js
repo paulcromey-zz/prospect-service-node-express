@@ -39,3 +39,5 @@ const server = app.listen(process.env.PORT || app.get('port'), function() {
 	var port = server.address().port;
 	logger.info('Magic happens on port ' + port);
 });  
+
+module.exports = server;

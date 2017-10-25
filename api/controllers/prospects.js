@@ -3,7 +3,8 @@ const jwt = require('jsonwebtoken');
 const uuidv1 = require('uuid/v1');
 const mongoose = require('mongoose');
 
-const Prospect = mongoose.model('Prospect');
+//const Prospect = require('../../api/schemas/prospects');
+const Prospect = require('../schemas/prospects');
 
 module.exports.getProspects = function(req, res) {
 
