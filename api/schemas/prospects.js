@@ -32,4 +32,6 @@ const prospectSchema = new mongoose.Schema({
     }
 });
 
-mongoose.model('Prospect', prospectSchema);
+const ProspectSchema = mongoose.model('Prospect', prospectSchema);
+
+module.exports = ProspectSchema;
