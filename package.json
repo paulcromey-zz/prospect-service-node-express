@@ -1,11 +1,13 @@
 {
-  "name": "asteri-creative",
+  "name": "prospect-service-node-express",
   "version": "1.0.0",
   "description": "MEAN stack application",
   "main": "app.js",
   "scripts": {
     "start": "node app.js",
-    "test": "mocha --recursive"
+    "test": "mocha --recursive",
+    "clean": "rm package.zip",
+    "build": "npm install && rm -r node_modules/aws-sdk && zip -9 -r package.zip package.json app.js lambda.js api node_modules"
   },
   "repository": {
     "type": "git",
@@ -21,7 +23,9 @@
   },
   "homepage": "https://github.com/paulcromey/mean#readme",
   "dependencies": {
+    "aws-serverless-express": "^3.0.2",
     "body-parser": "^1.17.2",
+    "dynamoose": "^0.8.6",
     "express": "^4.15.3",
     "jquery": "^3.2.1",
     "jsonwebtoken": "^7.4.1",
