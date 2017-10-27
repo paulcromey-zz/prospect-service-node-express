@@ -3,32 +3,11 @@ const jwt = require('jsonwebtoken');
 const uuidv1 = require('uuid/v1');
 const mongoose = require('mongoose');
 
-//const Prospect = require('../schemas/prospects');
-
-const Prospect = require('../models/prospect');
+const Prospect = require('../schemas/prospects');
 
 module.exports.getProspects = function(req, res) {
 
-	//console.log("GET Prospects");
-
-	// Create a new cat object
-	var prospect = new Prospect({
-		uuid: 666,
-		email: 'Garfield',
-		ip_address: '10.10.10.10'
-	});
-
-	// Save to DynamoDB
-	prospect.save();
-
-	// Lookup in DynamoDB
-	Prospect.get(666)
-    .then(function (prospects) {
-		//console.log('Never trust a smiling cat. - ' + badCat.name);
-		res.status(200).json(prospects);
-    });
-
-	/*var maxCount = 10;
+	var maxCount = 10;
 
 	if(isNaN(_offset(req)) || isNaN(_count(req))){
 		res.status(400).json({
@@ -50,7 +29,7 @@ module.exports.getProspects = function(req, res) {
 		} else {
 			res.status(200).json(prospects);
 		}
-	});*/
+	});
 		
 };
 

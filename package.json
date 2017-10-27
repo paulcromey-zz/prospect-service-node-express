@@ -23,9 +23,7 @@
   },
   "homepage": "https://github.com/paulcromey/mean#readme",
   "dependencies": {
-    "aws-serverless-express": "^3.0.2",
     "body-parser": "^1.17.2",
-    "dynamoose": "^0.8.6",
     "express": "^4.15.3",
     "jquery": "^3.2.1",
     "jsonwebtoken": "^7.4.1",
